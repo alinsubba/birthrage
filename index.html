@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIRTHRAGE | July-Born Meme Coin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Base styles */
+    :root {
+      --primary: #ff0033;
+      --secondary: #ffcc00;
+      --dark: #0d0d0d;
+      --darker: #080808;
+      --gray: #1c1c1c;
+      --light: #f0f0f0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--darker), #1a0005);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 51, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 204, 0, 0.1) 0%, transparent 20%);
+      z-index: -1;
+    }
+    
+    /* Header styles */
+    header {
+      background: linear-gradient(to right, var(--darker), var(--dark));
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border-bottom: 2px solid var(--primary);
+    }
+    
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo h1 {
+      font-size: 2.2rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -1px;
+      font-weight: 800;
+    }
+    
+    .logo-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      animation: pulse 2s infinite;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: var(--secondary);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    nav a:hover::after {
+      width: 70%;
+    }
+    
+    /* Hero section */
+    .hero {
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .hero h2 {
+      font-size: 4.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(255, 0, 51, 0.3);
+      line-height: 1.1;
+    }
+    
+    .tagline {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      color: var(--secondary);
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    }
+    
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.1rem;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 5px 15px rgba(255, 0, 51, 0.4);
+    }
+    
+    .btn-primary:hover {
+      background: #ff0022;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 0, 51, 0.6);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 204, 0, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    /* Content sections */
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding-bottom: 1rem;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+    
+    .box-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .box {
+      background: linear-gradient(145deg, rgba(40, 40, 40, 0.7), rgba(20, 20, 20, 0.8));
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+    
+    .box h3 {
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .box h3 i {
+      color: var(--primary);
+    }
+    
+    .box p {
+      margin-bottom: 1rem;
+      color: #e0e0e0;
+    }
+    
+    .box ul {
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .box li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+    
+    .box li::before {
+      content: '•';
+      color: var(--secondary);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    
+    /* Tokenomics section */
+    .tokenomics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .token-card {
+      background: linear-gradient(145deg, rgba(40, 40, 40, 0.7), rgba(20, 20, 20, 0.8));
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .token-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+    
+    .token-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+    }
+    
+    .token-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 1rem 0;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Roadmap */
+    .roadmap-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 0;
+    }
+    
+    .roadmap-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .roadmap-item {
+      position: relative;
+      width: calc(50% - 40px);
+      padding: 2rem;
+      background: linear-gradient(145deg, rgba(40, 40, 40, 0.7), rgba(20, 20, 20, 0.8));
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      margin-bottom: 3rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .roadmap-item:nth-child(odd) {
+      left: 0;
+    }
+    
+    .roadmap-item:nth-child(even) {
+      left: calc(50% + 40px);
+    }
+    
+    .roadmap-item::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 8px rgba(255, 0, 51, 0.3);
+    }
+    
+    .roadmap-item:nth-child(odd)::before {
+      right: -55px;
+    }
+    
+    .roadmap-item:nth-child(even)::before {
+      left: -55px;
+    }
+    
+    .roadmap-title {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    /* Community section */
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .community-card {
+      background: linear-gradient(145deg, rgba(40, 40, 40, 0.7), rgba(20, 20, 20, 0.8));
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .community-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 204, 0, 0.2);
+    }
+    
+    .community-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+    }
+    
+    .community-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .community-btn:hover {
+      background: #ff0022;
+      transform: scale(1.05);
+    }
+    
+    /* Contract address */
+    .contract-box {
+      background: linear-gradient(145deg, rgba(40, 40, 40, 0.7), rgba(20, 20, 20, 0.8));
+      padding: 2rem;
+      border-radius: 16px;
+      margin: 3rem auto;
+      max-width: 900px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .contract-address {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      font-family: monospace;
+      font-size: 1.1rem;
+      word-break: break-all;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .copy-btn {
+      background: var(--secondary);
+      color: var(--dark);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .copy-btn:hover {
+      background: #e6b800;
+      transform: scale(1.05);
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(to right, var(--darker), var(--dark));
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+      border-top: 2px solid var(--primary);
+      margin-top: 4rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gray);
+      color: var(--secondary);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-5px);
+    }
+    
+    .copyright {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 1rem;
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero h2 {
+        font-size: 3rem;
+      }
+      
+      .roadmap-item {
+        width: 100%;
+        left: 0 !important;
+      }
+      
+      .roadmap-item:nth-child(even)::before,
+      .roadmap-item:nth-child(odd)::before {
+        display: none;
+      }
+      
+      .roadmap-container::before {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    /* Free hosting guide */
+    .guide-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 204, 0, 0.3);
+    }
+    
+    .guide-container h2 {
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .guide-card {
+      background: rgba(20, 20, 20, 0.6);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .guide-card h3 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .guide-card ul {
+      padding-left: 1.5rem;
+    }
+    
+    .guide-card li {
+      margin-bottom: 0.8rem;
+      color: #e0e0e0;
+    }
+    
+    .guide-card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .guide-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-fire logo-icon"></i>
+        <h1>BIRTHRAGE</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#tokenomics">Tokenomics</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#free-hosting">Free Hosting</a></li>
+          <li><a href="#contract">Contract</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>BIRTHRAGE MEME COIN</h2>
+    <p class="tagline">Born in July. Raised in Rage.</p>
+    <p>The hottest meme coin of the year, fueled by fire and community passion. Join the revolution and let your crypto journey begin with a bang!</p>
+    
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-primary">
+        <i class="fas fa-rocket"></i> Buy Now
+      </a>
+      <a href="#" class="btn btn-secondary">
+        <i class="fas fa-chart-line"></i> Chart
+      </a>
+      <a href="#" class="btn btn-secondary">
+        <i class="fab fa-telegram"></i> Telegram
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-title">
+      <h2>About BIRTHRAGE</h2>
+    </div>
+    
+    <div class="box-container">
+      <div class="box fade-in">
+        <h3><i class="fas fa-fire"></i> What is BIRTHRAGE?</h3>
+        <p>BIRTHRAGE is a July-born meme coin that celebrates fire, freedom, and fun. Fueled by rage and powered by community, $BRAGE is ready to dominate the memeverse with its unique combination of humor and utility.</p>
+        <p>We're not just another meme coin - we're a movement. Born from the fiery spirit of July, we're here to make waves in the crypto world.</p>
+      </div>
+      
+      <div class="box fade-in">
+        <h3><i class="fas fa-bolt"></i> Why Choose BIRTHRAGE?</h3>
+        <ul>
+          <li>Community-driven project with transparent leadership</li>
+          <li>Innovative tokenomics designed for sustainability</li>
+          <li>Regular community events and meme contests</li>
+          <li>Strong roadmap with real utility development</li>
+          <li>Active and passionate community members</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tokenomics Section -->
+  <section id="tokenomics">
+    <div class="section-title">
+      <h2>Tokenomics</h2>
+    </div>
+    
+    <div class="tokenomics-grid">
+      <div class="token-card fade-in">
+        <div class="token-icon">
+          <i class="fas fa-fire"></i>
+        </div>
+        <h3>Total Supply</h3>
+        <div class="token-value">1B</div>
+        <p>1,000,000,000 $BRAGE</p>
+      </div>
+      
+      <div class="token-card fade-in">
+        <div class="token-icon">
+          <i class="fas fa-burn"></i>
+        </div>
+        <h3>Burn Mechanism</h3>
+        <div class="token-value">2%</div>
+        <p>Automatically burned on every transaction</p>
+      </div>
+      
+      <div class="token-card fade-in">
+        <div class="token-icon">
+          <i class="fas fa-bullhorn"></i>
+        </div>
+        <h3>Marketing</h3>
+        <div class="token-value">3%</div>
+        <p>Dedicated to growth and promotion</p>
+      </div>
+      
+      <div class="token-card fade-in">
+        <div class="token-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Community</h3>
+        <div class="token-value">100%</div>
+        <p>Community owned and driven</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section id="roadmap">
+    <div class="section-title">
+      <h2>Roadmap</h2>
+    </div>
+    
+    <div class="roadmap-container">
+      <div class="roadmap-item fade-in">
+        <div class="roadmap-title"><i class="fas fa-rocket"></i> Phase 1: Launch</div>
+        <ul>
+          <li>Token creation and deployment</li>
+          <li>Website and social media launch</li>
+          <li>Initial liquidity provision</li>
+          <li>Community building</li>
+        </ul>
+      </div>
+      
+      <div class="roadmap-item fade-in">
+        <div class="roadmap-title"><i class="fas fa-globe"></i> Phase 2: Community</div>
+        <ul>
+          <li>Telegram and Twitter growth campaigns</li>
+          <li>First meme contest with $BRAGE rewards</li>
+          <li>Community AMA sessions</li>
+          <li>Partnership announcements</li>
+        </ul>
+      </div>
+      
+      <div class="roadmap-item fade-in">
+        <div class="roadmap-title"><i class="fas fa-chart-line"></i> Phase 3: Growth</div>
+        <ul>
+          <li>Major exchange listings</li>
+          <li>Influencer marketing campaigns</li>
+          <li>Large-scale airdrops</li>
+          <li>Community referral program</li>
+        </ul>
+      </div>
+      
+      <div class="roadmap-item fade-in">
+        <div class="roadmap-title"><i class="fas fa-expand"></i> Phase 4: Expansion</div>
+        <ul>
+          <li>CoinGecko & CoinMarketCap listings</li>
+          <li>NFT collection launch</li>
+          <li>Merchandise store</li>
+          <li>Utility development</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Hosting Guide -->
+  <section id="free-hosting">
+    <div class="section-title">
+      <h2>Free Hosting Guide</h2>
+    </div>
+    
+    <div class="guide-container fade-in">
+      <h2><i class="fas fa-cloud-upload-alt"></i> How to Host This Website for Free</h2>
+      
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h3><i class="fas fa-server"></i> Option 1: Netlify</h3>
+          <ul>
+            <li>Create a free account at <a href="https://netlify.com" target="_blank">netlify.com</a></li>
+            <li>Drag & drop your website folder to deploy</li>
+            <li>Get a free subdomain: your-site.netlify.app</li>
+            <li>Free SSL certificate included</li>
+            <li>Continuous deployment from GitHub</li>
+          </ul>
+        </div>
+        
+        <div class="guide-card">
+          <h3><i class="fab fa-github"></i> Option 2: GitHub Pages</h3>
+          <ul>
+            <li>Create a GitHub account at <a href="https://github.com" target="_blank">github.com</a></li>
+            <li>Create a repository named: username.github.io</li>
+            <li>Upload your website files</li>
+            <li>Enable GitHub Pages in settings</li>
+            <li>Your site will be at: username.github.io</li>
+          </ul>
+        </div>
+        
+        <div class="guide-card">
+          <h3><i class="fas fa-globe"></i> Option 3: Free Domain</h3>
+          <ul>
+            <li>Get a free subdomain from <a href="https://freenom.com" target="_blank">freenom.com</a></li>
+            <li>Choose extensions like .tk, .ml, .ga</li>
+            <li>Point DNS to your hosting provider</li>
+            <li>Set up with Netlify or GitHub Pages</li>
+            <li>Free SSL via Cloudflare</li>
+          </ul>
+        </div>
+        
+        <div class="guide-card">
+          <h3><i class="fas fa-cloud"></i> Option 4: Vercel</h3>
+          <ul>
+            <li>Create account at <a href="https://vercel.com" target="_blank">vercel.com</a></li>
+            <li>Import your GitHub repository</li>
+            <li>Automatic deployments on changes</li>
+            <li>Free subdomain: your-site.vercel.app</li>
+            <li>Free SSL included</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contract Section -->
+  <section id="contract">
+    <div class="section-title">
+      <h2>Contract Details</h2>
+    </div>
+    
+    <div class="contract-box fade-in">
+      <h3>BIRTHRAGE Token Contract</h3>
+      <p>Network: Binance Smart Chain (BEP-20)</p>
+      
+      <div class="contract-address">
+        <span>0x65539902E6a924EEb88dd89e992226AA9b833533</span>
+        <button class="copy-btn" onclick="copyContract()">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+      </div>
+      
+      <p>Always verify the contract address before making any transactions.</p>
+      
+      <div class="hero-buttons">
+        <a href="https://bscscan.com/token/0x65539902E6a924EEb88dd89e992226AA9b833533" target="_blank" class="btn btn-primary">
+          <i class="fas fa-external-link-alt"></i> View on BSCScan
+        </a>
+        <a href="https://pancakeswap.finance" target="_blank" class="btn btn-secondary">
+          <i class="fas fa-exchange-alt"></i> Buy on PancakeSwap
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-telegram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-reddit"></i></a>
+      <a href="#"><i class="fab fa-medium"></i></a>
+    </div>
+    
+    <p class="copyright">© 2023 BIRTHRAGE Coin. All rights reserved.</p>
+    <p class="copyright">The future of meme coins is here. Join the rage!</p>
+  </footer>
+
+  <script>
+    // Copy contract address function
+    function copyContract() {
+      const contractAddress = "0x65539902E6a924EEb88dd89e992226AA9b833533";
+      navigator.clipboard.writeText(contractAddress).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+        }, 2000);
+      });
+    }
+    
+    // Fade-in animation for elements
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      fadeElements.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
