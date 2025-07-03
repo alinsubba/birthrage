@@ -587,62 +587,6 @@
         justify-content: center;
       }
     }
-    
-    /* Free hosting guide */
-    .guide-container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: rgba(30, 30, 30, 0.7);
-      border-radius: 16px;
-      border: 1px solid rgba(255, 204, 0, 0.3);
-    }
-    
-    .guide-container h2 {
-      color: var(--secondary);
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    
-    .guide-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .guide-card {
-      background: rgba(20, 20, 20, 0.6);
-      padding: 1.5rem;
-      border-radius: 12px;
-      border-left: 4px solid var(--primary);
-    }
-    
-    .guide-card h3 {
-      color: var(--secondary);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .guide-card ul {
-      padding-left: 1.5rem;
-    }
-    
-    .guide-card li {
-      margin-bottom: 0.8rem;
-      color: #e0e0e0;
-    }
-    
-    .guide-card a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    
-    .guide-card a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -658,7 +602,6 @@
           <li><a href="#about">About</a></li>
           <li><a href="#tokenomics">Tokenomics</a></li>
           <li><a href="#roadmap">Roadmap</a></li>
-          <li><a href="#free-hosting">Free Hosting</a></li>
           <li><a href="#contract">Contract</a></li>
         </ul>
       </nav>
@@ -800,63 +743,6 @@
           <li>Merchandise store</li>
           <li>Utility development</li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Free Hosting Guide -->
-  <section id="free-hosting">
-    <div class="section-title">
-      <h2>Free Hosting Guide</h2>
-    </div>
-    
-    <div class="guide-container fade-in">
-      <h2><i class="fas fa-cloud-upload-alt"></i> How to Host This Website for Free</h2>
-      
-      <div class="guide-grid">
-        <div class="guide-card">
-          <h3><i class="fas fa-server"></i> Option 1: Netlify</h3>
-          <ul>
-            <li>Create a free account at <a href="https://netlify.com" target="_blank">netlify.com</a></li>
-            <li>Drag & drop your website folder to deploy</li>
-            <li>Get a free subdomain: your-site.netlify.app</li>
-            <li>Free SSL certificate included</li>
-            <li>Continuous deployment from GitHub</li>
-          </ul>
-        </div>
-        
-        <div class="guide-card">
-          <h3><i class="fab fa-github"></i> Option 2: GitHub Pages</h3>
-          <ul>
-            <li>Create a GitHub account at <a href="https://github.com" target="_blank">github.com</a></li>
-            <li>Create a repository named: username.github.io</li>
-            <li>Upload your website files</li>
-            <li>Enable GitHub Pages in settings</li>
-            <li>Your site will be at: username.github.io</li>
-          </ul>
-        </div>
-        
-        <div class="guide-card">
-          <h3><i class="fas fa-globe"></i> Option 3: Free Domain</h3>
-          <ul>
-            <li>Get a free subdomain from <a href="https://freenom.com" target="_blank">freenom.com</a></li>
-            <li>Choose extensions like .tk, .ml, .ga</li>
-            <li>Point DNS to your hosting provider</li>
-            <li>Set up with Netlify or GitHub Pages</li>
-            <li>Free SSL via Cloudflare</li>
-          </ul>
-        </div>
-        
-        <div class="guide-card">
-          <h3><i class="fas fa-cloud"></i> Option 4: Vercel</h3>
-          <ul>
-            <li>Create account at <a href="https://vercel.com" target="_blank">vercel.com</a></li>
-            <li>Import your GitHub repository</li>
-            <li>Automatic deployments on changes</li>
-            <li>Free subdomain: your-site.vercel.app</li>
-            <li>Free SSL included</li>
-          </ul>
-        </div>
       </div>
     </div>
   </section>
